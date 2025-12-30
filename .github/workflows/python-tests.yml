@@ -35,6 +35,8 @@ jobs:
         with:
           repository: KamaTechOrg/AgCloud
           path: target-repo
+          # כאן אנחנו מזריקים את המפתח שיצרנו
+          token: ${{ secrets.GH_PAT }}
 
       # 3. התקנת מנהל החבילות uv
       - name: Install uv
