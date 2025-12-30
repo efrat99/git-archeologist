@@ -10,7 +10,7 @@ client = genai.Client(api_key=os.getenv("GOOGLE_API_KEY"))
 
 mcp = FastMCP("Git-Archeologist")
 
-REPO_PATH = "C:\\Users\\משתמש\\Desktop\\vectordb_efrat\\AgCloud"
+REPO_PATH = os.getenv("REPO_PATH","C:\\Users\\משתמש\\Desktop\\vectordb_efrat\\AgCloud")
 
 @mcp.tool()
 def get_recent_history(limit: int = 5) -> str:
