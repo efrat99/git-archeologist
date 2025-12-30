@@ -1,0 +1,35 @@
+# name: Python Tests
+# on: [push]
+# jobs:
+#   test:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v4
+#       - name: Install uv
+#         run: curl -LsSf https://astral.sh/uv/install.sh | sh
+#       - name: Run tests
+#         run: uv run pytest
+
+
+name: Python Tests
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install uv
+        run: curl -LsSf https://astral.sh/uv/install.sh | sh
+
+      - name: Install dependencies
+        # זה השלב שחסר לך - הוא מתקין את כל מה שמופיע ב-pyproject.toml
+        run: uv sync
+
+      - name: Run tests
+        # כאן אנחנו מזריקים את המפתח מה-Secrets לתוך ה-Environment
+        env:
+          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+          REPO_PATH: "."
+        run: uv run pytest
