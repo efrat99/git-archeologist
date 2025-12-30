@@ -10,26 +10,45 @@
 #       - name: Run tests
 #         run: uv run pytest
 
-
 name: Python Tests
-on: [push]
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
 
 jobs:
   test:
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
 
+    steps:
+      # 1. משיכת הקוד של השרת שלך (git-archeologist)
+      - name: Checkout git-archeologist
+        uses: actions/checkout@v4
+        with:
+          path: .
+
+      # 2. משיכת פרויקט המטרה (AgCloud) לתיקייה נפרדת
+      - name: Checkout AgCloud target repository
+        uses: actions/checkout@v4
+        with:
+          repository: KamaTechOrg/AgCloud
+          path: target-repo
+
+      # 3. התקנת מנהל החבילות uv
       - name: Install uv
         run: curl -LsSf https://astral.sh/uv/install.sh | sh
 
+      # 4. התקנת כל התלויות המופיעות ב-pyproject.toml
       - name: Install dependencies
-        # זה השלב שחסר לך - הוא מתקין את כל מה שמופיע ב-pyproject.toml
         run: uv sync
 
-      - name: Run tests
-        # כאן אנחנו מזריקים את המפתח מה-Secrets לתוך ה-Environment
+      # 5. הרצת הטסטים עם הזרקת המפתחות והנתיבים הנדרשים
+      - name: Run pytest
         env:
+          # שימוש ב-Secret המאובטח שהגדרת בגיטהאב
           GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
-          REPO_PATH: "."
+          # הפניית השרת לתיקייה של AgCloud שהורדנו בצעד 2
+          REPO_PATH: "./target-repo"
         run: uv run pytest
