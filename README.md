@@ -19,7 +19,7 @@ Tech Stack: Python, FastMCP, GitPython, Gemini API.
 
 
 
-Project Title: Semantic Git Archaeologist (MCP Server)
+Semantic Git Archaeologist (MCP Server)
 
 A semantic code archaeology tool that analyzes Git history and uses Large Language Models (LLMs) to explain how and why code evolved over time.
 
