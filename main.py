@@ -1,5 +1,7 @@
+from server import mcp
+
 def main():
-    print("Welcome to git-archeologist!")
+    mcp.run()
 
 
 if __name__ == "__main__":

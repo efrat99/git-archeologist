@@ -144,6 +144,3 @@ def get_file_evolution(file_path: str) -> str:
     except Exception as e:
         return f"Evolution trace failed: {e}"
 
-if __name__ == "__main__":
-    mcp.run()
-
