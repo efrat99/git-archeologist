@@ -11,7 +11,7 @@ client = genai.Client(api_key=os.getenv("GOOGLE_API_KEY"))
 
 mcp = FastMCP("Git-Archeologist")
 
-REPO_PATH = os.getenv("REPO_PATH")
+REPO_PATH = os.getenv("REPO_PATH", ".")
 if not REPO_PATH:
     raise RuntimeError("REPO_PATH must be set")
 
