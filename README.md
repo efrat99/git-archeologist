@@ -55,7 +55,7 @@ Watch the agent chain multiple tools (`analyze_code_hotspots`, `get_file_evoluti
 ### 3. Under the Hood: Full MCP Support
 Built with robust protocol compliance, verifiable via the official MCP Inspector.
 
-![MCP Inspector Debugging](docs/images/demo-inspector.png)
+![MCP Inspector Debugging](docs/images/mcp-inspector.png)
 
 
 ## 🛠️ Tech Stack
