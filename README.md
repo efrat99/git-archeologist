@@ -45,7 +45,7 @@ graph LR
 The agent analyzes the code and generates visual, structured reports instantly inside Claude.
 *(Notice the "Critical Risk" warning generated from historical analysis)*
 
-![Risk Assessment Artifact](docs/images/demo-artifact.jpg)
+![Risk Assessment Artifact](docs/images/demo-artifact.png)
 
 ### 2. The Process: Autonomous Reasoning
 Watch the agent chain multiple tools (`analyze_code_hotspots`, `get_file_evolution`) to diagnose complex architectural issues without human intervention.
